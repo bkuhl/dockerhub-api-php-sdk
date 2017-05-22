@@ -7,7 +7,7 @@ class DockerHub
     /** @var Client */
     protected $client;
 
-    public function __construct(string $username, string $password, ?Client $client)
+    public function __construct(string $username, string $password, ?Client $client = null)
     {
         if ($client == null) {
             $this->client = new Client($username, $password);
