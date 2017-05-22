@@ -23,6 +23,13 @@ class Repository
         return $this->client->get('/repositories/'.$this->name.'/tags');
     }
 
+    public function delete() : bool
+    {
+        $this->client->delete('/repositories/'.$this->name);
+
+        return $this->client->httpStatusCode == 202;
+    }
+
     public function name() : string
     {
         return $this->name;

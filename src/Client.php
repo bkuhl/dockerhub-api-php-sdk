@@ -54,6 +54,12 @@ class Client extends Curl
         return parent::get($this->makeUrl($url), $data);
     }
 
+    public function delete($url, $query_parameters = array(), $data = array())
+    {
+        return parent::delete($this->makeUrl($url), $query_parameters, $data);
+    }
+
+
     private function makeUrl(string $url)
     {
         if ($url[0] != '/') {

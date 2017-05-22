@@ -39,6 +39,15 @@ class RepositoryTest extends TestCase
     }
 
     /** @test */
+    public function canDeleteRepository()
+    {
+        $this->client->shouldReceive('delete')->with('/repositories/'.$this->namespace.'/'.$this->repositoryName);
+        $this->client->httpStatusCode = 202;
+
+        $this->assertTrue($this->repository->delete());
+    }
+
+    /** @test */
     public function replacesUnderscoreWithLibraryInName()
     {
         $this->repository = new Repository($this->client, '_/mysql');
