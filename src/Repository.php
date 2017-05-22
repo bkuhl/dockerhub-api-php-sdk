@@ -18,14 +18,22 @@ class Repository
         $this->name = str_replace('_/', 'library/', $name);
     }
 
+    /**
+     * Get the tags for a given repository.  Tags are in the same
+     * order they are on DockerHub (most recent first) and are
+     * paginated.
+     */
     public function tags()
     {
-        return $this->client->get('/repositories/'.$this->name.'/tags');
+        return $this->client->get('/repositories/'.$this->name().'/tags');
     }
 
+    /**
+     * Delete the repository
+     */
     public function delete() : bool
     {
-        $this->client->delete('/repositories/'.$this->name);
+        $this->client->delete('/repositories/'.$this->name());
 
         return $this->client->httpStatusCode == 202;
     }

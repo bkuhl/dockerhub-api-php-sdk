@@ -22,8 +22,17 @@ class DockerHub
         return $this->client->get('user');
     }
 
+
     public function repository(string $name) : Repository
     {
         return new Repository($this->client, $name);
+    }
+
+    /**
+     * The repositories for a given namespace
+     */
+    public function repositories(string $namespace)
+    {
+        return $this->client->get('/repositories/'.$namespace);
     }
 }

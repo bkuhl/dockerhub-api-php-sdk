@@ -39,6 +39,17 @@ class DockerHubTest extends TestCase
     }
 
     /** @test */
+    public function canListRepositories()
+    {
+        $namespace = uniqid();
+        $repositories = uniqid();
+
+        $this->client->shouldReceive('get')->with('/repositories/'.$namespace)->andReturn($repositories);
+
+        $this->assertEquals($repositories, $this->dockerHub->repositories($namespace));
+    }
+
+    /** @test */
     public function suppliesCurrentUser()
     {
         $currentUser = uniqid();

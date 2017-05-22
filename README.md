@@ -4,8 +4,8 @@ A PHP SDK for integrating with DockerHub's API v2.
 
 * [Installation](#installation)
 * [Usage](#usage)
+  * [Organizations](#organizations)
   * [Repositories](#repositories)
-    * [List Tags](#list-tags)
 
 <a name='installation'></a>
 
@@ -23,13 +23,25 @@ composer require bkuhl/dockerhub-api-php-sdk
 $dockerhub = new \DockerHub\DockerHub($username, $password);
 ```
 
+<a name='organizations'></a>
+
+## Organizations
+
+List all repositories in an organization
+
+```
+$dockerhub->repositories($organization);
+```
+
 <a name='repositories'></a>
 
 ## Repositories
 
-<a name='list-tags'></a>
+Delete a repository.
 
-### List Tags
+```
+$dockerhub->repository('[namespace]/[name]')->delete(); // bool
+```
 
 List the tags associated with a repository.
 
