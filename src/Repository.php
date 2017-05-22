@@ -13,7 +13,9 @@ class Repository
     public function __construct(Client $client, string $name)
     {
         $this->client = $client;
-        $this->name = $name;
+
+        // for official libraries, we need to use "library" as the namespace
+        $this->name = str_replace('_/', 'library/', $name);
     }
 
     public function create(string $shortDescription = '', ?string $longDescription = null, bool $private = false) : Repository
@@ -34,5 +36,10 @@ class Repository
     public function tags()
     {
         return $this->client->get('/repositories/'.$this->name.'/tags');
+    }
+
+    public function name() : string
+    {
+        return $this->name;
     }
 }

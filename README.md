@@ -28,6 +28,8 @@ $dockerhub = new \DockerHub\DockerHub($username, $password);
 
 ## Repositories
 
+ > When accessing library repositories such as https://hub.docker.com/_/mysql/ you
+
 <a name='list-tags'></a>
 
 ### List Tags

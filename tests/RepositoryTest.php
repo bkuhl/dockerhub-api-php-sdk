@@ -37,4 +37,18 @@ class RepositoryTest extends TestCase
 
         $this->assertEquals($return, $this->repository->tags());
     }
+
+    /** @test */
+    public function replacesUnderscoreWithLibraryInName()
+    {
+        $this->repository = new Repository($this->client, '_/mysql');
+        $this->assertEquals('library/mysql', $this->repository->name());
+    }
+
+    /** @test */
+    public function suppliesUntouchedNames()
+    {
+        $this->repository = new Repository($this->client, 'my-namespace/my-project');
+        $this->assertEquals('my-namespace/my-project', $this->repository->name());
+    }
 }

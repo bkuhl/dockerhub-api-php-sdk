@@ -46,9 +46,7 @@ class Client extends Curl
 
     public function post($url, $data = array(), $follow_303_with_post = false)
     {
-        $response = parent::post($this->makeUrl($url), $data, $follow_303_with_post);
-
-        return json_decode($response);
+        return parent::post($this->makeUrl($url), $data, $follow_303_with_post);
     }
 
     public function get($url, $data = array())
