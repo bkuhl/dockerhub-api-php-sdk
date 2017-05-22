@@ -7,10 +7,14 @@ class DockerHub
     /** @var Client */
     protected $client;
 
-    public function __construct(string $username, string $password)
+    public function __construct(string $username, string $password, ?Client $client)
     {
-        $this->client = new Client($username, $password);
-        $this->client->initialize();
+        if ($client == null) {
+            $this->client = new Client($username, $password);
+            $this->client->initialize();
+        } else {
+            $this->client = $client;
+        }
     }
 
     public function currentUser()
@@ -22,13 +26,4 @@ class DockerHub
     {
         return new Repository($this->client, $name);
     }
-
-    /**
-     * Allow overriding of the client for testing purposes
-     */
-    public function setClient(Client $client)
-    {
-        $this->client = $client;
-    }
-
 }

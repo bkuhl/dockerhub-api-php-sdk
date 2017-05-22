@@ -26,8 +26,8 @@ class DockerHubTest extends TestCase
         $this->username = uniqid();
         $this->password = uniqid();
         $this->client = Mockery::mock(Client::class);
-        $this->dockerHub = new DockerHub($this->username, $this->password);
-        $this->dockerHub->setClient($this->client);
+        $this->client->shouldReceive('initialize')->once();
+        $this->dockerHub = new DockerHub($this->username, $this->password, $this->client);
     }
 
     /** @test */
