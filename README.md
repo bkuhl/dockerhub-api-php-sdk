@@ -7,7 +7,6 @@ A PHP SDK for integrating with DockerHub's API v2.
   * [Repositories](#repositories)
     * [List Tags](#list-tags)
 
-
 <a name='installation'></a>
 
 # Installation
@@ -27,8 +26,6 @@ $dockerhub = new \DockerHub\DockerHub($username, $password);
 <a name='repositories'></a>
 
 ## Repositories
-
- > When accessing library repositories such as https://hub.docker.com/_/mysql/ you
 
 <a name='list-tags'></a>
 
